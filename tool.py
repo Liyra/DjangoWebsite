@@ -5,7 +5,7 @@ import argparse, os, shutil, subprocess, sys
 
 # Variables
 # To be remove
-folderToRm = ["/index/__pycache__", "/index/__pycache__", "/index/migrations/__pycache__", "/website/__pycache__"]
+folderToRm = ["/index/__pycache__", "/index/migrations/__pycache__", "/resume/__pycache__", "/resume/migrations/__pycache__", "/website/__pycache__"]
 fileToRm = ["/server.log"]
 
 # Functions
@@ -41,12 +41,6 @@ def clean():
     rmvFile(file)
 
 
-def restart():
-  stop()
-  clean()
-  start()
-
-
 def cmdDptchr(choice):
   if choice == 'start':
     start()
@@ -60,7 +54,7 @@ def cmdDptchr(choice):
 
 def main(argv):
 	parser = argparse.ArgumentParser(description='Tool to run the server. /usr/bin/python3 should be configured')
-	parser.add_argument('cmd', choices=['start', 'stop', 'clean'], help='Either start, restart, stop or clean')
+	parser.add_argument('cmd', choices=['start', 'stop', 'clean'], help='Either start, stop or clean')
 	args = parser.parse_args()
 	cmdDptchr(args.cmd)
 
